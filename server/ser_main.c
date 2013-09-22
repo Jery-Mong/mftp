@@ -7,7 +7,6 @@
 
 #include "ser_msg.h"
 #include "message.h"
-#include "ser_local.h"
 #include "thread_pool.h"
 #include "list.h"
 

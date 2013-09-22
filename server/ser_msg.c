@@ -10,9 +10,9 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-#include "ser_local.h"
 #include "message.h"
 #include "transmit.h"
+#include "ser_msg.h"
 
 unsigned int __popen(char *cmd, char *buf, int buf_size)
 {
@@ -82,7 +82,7 @@ void msg_send_file(struct client *clnt)
 		send_file(clnt->fd, fd);
 	}
 }
-void *ser_msg_handler(void *data)
+void ser_msg_handler(void *data)
 {
 	struct client *clnt = (struct client *)data;
 	struct message *msg = (struct message *)(clnt->msg_buf);
@@ -98,5 +98,4 @@ void *ser_msg_handler(void *data)
 		msg_send_file(clnt);
 		break;
 	}
-	return NULL;
 }
